@@ -5,8 +5,9 @@ public class CalculatorKus {
         String[] actions = {"+", "-", "/", "*"};
         String[] regexActions = {"\\+", "-", "/", "\\*"};
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите арифметическое выражение (a+b, a-b, a*b, a/b): ");
+        System.out.println("Введите арифметическое выражение (a + b, a - b, a * b, a / b): ");
         String exp = scanner.nextLine();
+        exp = exp.trim().replaceAll("\\s+", "");
         int actionIndex=-1;
         for (int i = 0; i < actions.length; i++) {
             if(exp.contains(actions[i])){
@@ -20,8 +21,8 @@ public class CalculatorKus {
         }
         String[] data = exp.split(regexActions[actionIndex]);
         if (data.length != 2) {
-            throw new Exception   ("т.к. формат математической операции не удовлетворяет заданию - два\n" +
-                    "операнда и один оператор");
+            throw new Exception ("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор");
+
         }
         int a,b;
         a = Integer.parseInt(data[0]);
